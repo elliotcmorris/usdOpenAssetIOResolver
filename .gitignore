@@ -1,0 +1,11 @@
+venv
+__pycache__
+*.egg-info
+.idea
+.vim
+/dist/
+/resources/build/.vagrant/
+/.pybuild/
+/build
+/CMakeUserPresets.json
+/out
