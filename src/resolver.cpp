@@ -34,7 +34,7 @@ std::string UsdOpenAssetIOResolver::_CreateIdentifier(
     const std::string &assetPath,
     const ArResolvedPath &anchorAssetPath) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", anchorAssetPath :" + anchorAssetPath.GetPathString() + "\n");
     return ArDefaultResolver::_CreateIdentifier(assetPath, anchorAssetPath);
 }
 
@@ -42,28 +42,28 @@ std::string UsdOpenAssetIOResolver::_CreateIdentifierForNewAsset(
     const std::string &assetPath,
     const ArResolvedPath &anchorAssetPath) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", anchorAssetPath :" + anchorAssetPath.GetPathString() + "\n");
     return ArDefaultResolver::_CreateIdentifierForNewAsset(assetPath, anchorAssetPath);
 }
 
 ArResolvedPath UsdOpenAssetIOResolver::_Resolve(
     const std::string &assetPath) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", assetPath :" + assetPath + "\n");
     return ArDefaultResolver::_Resolve(assetPath);
 }
 
 ArResolvedPath UsdOpenAssetIOResolver::_ResolveForNewAsset(
     const std::string &assetPath) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", assetPath :" + assetPath + "\n");
     return ArDefaultResolver::_ResolveForNewAsset(assetPath);
 }
 
 /* Asset Operations*/
 std::string UsdOpenAssetIOResolver::_GetExtension(const std::string &assetPath) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", assetPath :" + assetPath + "\n");
     return ArDefaultResolver::_GetExtension(assetPath);
 }
 
@@ -71,7 +71,7 @@ ArAssetInfo UsdOpenAssetIOResolver::_GetAssetInfo(
     const std::string &assetPath,
     const ArResolvedPath &resolvedPath) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", resolvedPath :" + resolvedPath.GetPathString() + "\n");
     return ArDefaultResolver::_GetAssetInfo(assetPath, resolvedPath);
 }
 
@@ -79,21 +79,21 @@ ArTimestamp UsdOpenAssetIOResolver::_GetModificationTimestamp(
     const std::string &assetPath,
     const ArResolvedPath &resolvedPath) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", resolvedPath :" + resolvedPath.GetPathString() + "\n");
     return ArDefaultResolver::_GetModificationTimestamp(assetPath, resolvedPath);
 }
 
 std::shared_ptr<ArAsset> UsdOpenAssetIOResolver::_OpenAsset(
     const ArResolvedPath &resolvedPath) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", resolvedPath :" + resolvedPath.GetPathString() + "\n");
     return ArDefaultResolver::_OpenAsset(resolvedPath);
 }
 
 bool UsdOpenAssetIOResolver::_CanWriteAssetToPath(const ArResolvedPath &resolvedPath,
                                                   std::string *whyNot) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", resolvedPath :" + resolvedPath.GetPathString() + "\n");
     return ArDefaultResolver::CanWriteAssetToPath(resolvedPath, whyNot);
 }
 
@@ -101,6 +101,6 @@ std::shared_ptr<ArWritableAsset> UsdOpenAssetIOResolver::_OpenAssetForWrite(
     const ArResolvedPath &resolvedPath,
     WriteMode writeMode) const
 {
-    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + "\n");
+    TF_DEBUG(OAIO_RESOLVER).Msg("OAIO Resolver: " + TF_FUNC_NAME() + ", resolvedPath :" + resolvedPath.GetPathString() + "\n");
     return ArDefaultResolver::_OpenAssetForWrite(resolvedPath, std::move(writeMode));
 }

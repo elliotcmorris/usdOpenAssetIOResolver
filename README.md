@@ -33,3 +33,13 @@ export TF_DEBUG=OAIO_RESOLVER
 ```
 
 To enable debug logging from the resolver.
+
+## Testing
+
+To run tests, from the project root
+
+```sh
+cd tests
+python -m pip install -r requirements.txt
+pytest
+```

@@ -10,7 +10,7 @@
                     }
                 }
             },
-            "LibraryPath": "../libusdOpenAssetIOResolver.so",
+            "LibraryPath": "../../build/dist/libusdOpenAssetIOResolver.so",
             "Name": "usdOpenAssetIOResolver",
             "Type": "library"
         }
