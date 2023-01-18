@@ -43,3 +43,9 @@ cd tests
 python -m pip install -r requirements.txt
 pytest
 ```
+
+> **Note**
+>
+> You will need `pxr` pre-installed into your python environment in order
+> to run these tests. If you have installed USD in the standard manner,
+> it is likely your `PYTHONPATH` will already be extended appropriately.
