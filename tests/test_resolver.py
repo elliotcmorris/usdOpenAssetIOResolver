@@ -9,7 +9,7 @@ import pytest
 import os
 
 # This environment var must be set before the usd imports.
-os.environ["TF_DEBUG"] = "OAIO_RESOLVER"
+os.environ["TF_DEBUG"] = "OPENASSETIO_RESOLVER"
 from pxr import Plug, Usd
 
 
