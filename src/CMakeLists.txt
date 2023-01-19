@@ -22,3 +22,10 @@ install(
     DESTINATION
         .
 )
+
+install(
+    FILES
+		resources/plugInfo.json
+    DESTINATION
+        ./resources
+)
