@@ -16,8 +16,10 @@ from pxr import Plug, Usd
 @pytest.fixture(autouse=True)
 def register_plugin():
     # plugInfo.json file for the example resolver should be installed
-    # in the resources folder under the test directory.
-    Plug.Registry().RegisterPlugins(os.path.join(os.getcwd(), "resources"))
+    # in the resources folder under the dist directory.
+    Plug.Registry().RegisterPlugins(
+        os.path.join(os.getcwd(), "../build/dist/resources")
+    )
 
 
 def test_open_stage_and_logging(capfd):
