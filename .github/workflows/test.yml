@@ -15,7 +15,7 @@ jobs:
     name: Test-Resolver
     runs-on: ubuntu-latest
     container:
-      image: aswf/ci-vfxall:2022
+      image: aswf/ci-vfxall:2022-clang13.1
     steps:
       - uses: actions/checkout@v3
 
