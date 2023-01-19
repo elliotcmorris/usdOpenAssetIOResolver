@@ -23,10 +23,13 @@ def register_plugin():
 def test_open_stage_and_logging(capfd):
     stage = Usd.Stage.Open("resources/empty_shot.usda")
     captured = capfd.readouterr()
-    assert "_CreateIdentifier" in captured.out
-    assert "_Resolve" in captured.out
-    assert "_GetExtension" in captured.out
-    assert "_GetAssetInfo" in captured.out
-    assert "_OpenAsset" in captured.out
-    assert "_GetModificationTimestamp" in captured.out
-    assert "_GetExtension" in captured.out
+
+    outputs = captured.out.split(os.environ["TF_DEBUG"])
+    assert "UsdOpenAssetIOResolver::UsdOpenAssetIOResolver" in outputs[1]
+    assert "_CreateIdentifier" in outputs[2]
+    assert "_Resolve" in outputs[3]
+    assert "_GetExtension" in outputs[4]
+    assert "_GetAssetInfo" in outputs[5]
+    assert "_OpenAsset" in outputs[6]
+    assert "_GetModificationTimestamp" in outputs[7]
+    assert "_GetExtension" in outputs[8]
