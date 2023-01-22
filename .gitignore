@@ -1,7 +1,5 @@
-venv
 __pycache__
 /dist/
-/.pybuild/
 /build
 /CMakeUserPresets.json
 /out
