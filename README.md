@@ -19,6 +19,10 @@ cmake --install build
 
 ## Running
 
+To enable the resolver, before running any USD application, you must set
+the `PXR_PLUGINPATH_NAME` environment variable to point to
+`plugInfo.json`.
+
 ```sh
 export PXR_PLUGINPATH_NAME=$(pwd)/build/dist/resources/plugInfo.json
 usdcat yourUsdFile.usd
@@ -39,6 +43,7 @@ To enable debug logging from the resolver.
 To run tests, from the project root
 
 ```sh
+export PXR_PLUGINPATH_NAME=$(pwd)/build/dist/resources/plugInfo.json
 cd tests
 python -m pip install -r requirements.txt
 pytest
