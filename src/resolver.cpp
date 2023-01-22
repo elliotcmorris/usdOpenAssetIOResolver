@@ -3,6 +3,8 @@
 
 #include "resolver.h"
 
+#include <utility>
+
 #include "pxr/base/tf/debug.h"
 #include "pxr/base/tf/diagnostic.h"
 #include "pxr/usd/ar/assetInfo.h"
@@ -12,9 +14,9 @@
 PXR_NAMESPACE_USING_DIRECTIVE
 PXR_NAMESPACE_OPEN_SCOPE
 
-AR_DEFINE_RESOLVER(UsdOpenAssetIOResolver, ArResolver);
+AR_DEFINE_RESOLVER(UsdOpenAssetIOResolver, ArResolver)
 
-TF_DEBUG_CODES(OPENASSETIO_RESOLVER);
+TF_DEBUG_CODES(OPENASSETIO_RESOLVER)
 
 PXR_NAMESPACE_CLOSE_SCOPE
 

@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 #include <pxr/usd/ar/defaultResolver.h>
 
