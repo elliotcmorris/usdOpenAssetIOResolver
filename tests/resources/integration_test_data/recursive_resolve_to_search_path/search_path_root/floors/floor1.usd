@@ -1,0 +1,16 @@
+#usda 1.0
+def "ParkingLot_Floor"
+{
+    def "Car1" (
+        references = @car@</Car>
+    )
+    {
+        color3f color = (0, 0, 1)
+    }
+    def "Car2" (
+        references = @car@</Car>
+    )
+    {
+        color3f color = (0, 0, 1)
+    }
+}

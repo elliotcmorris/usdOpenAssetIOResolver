@@ -1,0 +1,5 @@
+#usda 1.0
+def "ParkingLot_Floor"
+{
+    color3f color = (0, 0, 1)
+}

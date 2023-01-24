@@ -1,0 +1,15 @@
+{
+  "entities": {
+    "floor": {
+      "versions": [
+        {
+          "traits": {
+            "openassetio-mediacreation:content.LocatableContent": {
+              "location": "floor1.usd"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
