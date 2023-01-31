@@ -11,17 +11,58 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  #build-openassetio:
+  #  name: Build-OpenAssetIO
+  #  runs-on: ubuntu-latest
+  #  container:
+  #    image: ghcr.io/openassetio/openassetio-build
+  #  steps:
+  #    - name: Checkout OpenAssetIO
+  #      uses: actions/checkout@v3
+  #      with:
+  #        repository: OpenAssetIO/OpenAssetIO
+  #        path: openassetio-checkout
+  #
+  #    - name: Build OpenAssetIO
+  #      run: >
+  #        cd openassetio-checkout &&
+  #        mkdir build &&
+  #        cmake -S . -DCMAKE_BUILD_TYPE=Debug -DOPENASSETIO_GLIBCXX_USE_CXX11_ABI=ON -B build &&
+  #        cmake --build build &&
+  #        cmake --install build
+  #
+  #    - uses: actions/upload-artifact@v3
+  #      with:
+  #        name: "openassetio-usdresolver-build"
+  #        path: openassetio-checkout/build
+  #        retention-days: 1
+
   test:
     name: Test-Resolver
     runs-on: ubuntu-latest
+    #needs: build-openassetio
     container:
       image: aswf/ci-vfxall:2022-clang13.1
     steps:
       - uses: actions/checkout@v3
+      #
+      # #Need to do something about this, what if multiple of these workflows are running at once.
+      # #(probably fine with the way we work on forks, but still...)
+      # - name: Retrieve saved openassetio build
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: openassetio-usdresolver-build
+      #     path: ./openassetio-usdresolver-build
 
-      - name: Build and install (Docker)
+      - name: Shortcut get build
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: openassetio-usdresolver-build
+          path: ./openassetio-usdresolver-build
+
+      - name: Build and install Resolver
         run: >
-          cmake -S . -B build &&
+          cmake -S . -DCMAKE_BUILD_TYPE=Debug -DOPENASSETIO_GLIBCXX_USE_CXX11_ABI=ON -DCMAKE_PREFIX_PATH="./openassetio-usdresolver-build/dist" -B build &&
           cmake --build build &&
           cmake --install build
 
@@ -30,5 +71,15 @@ jobs:
 
       - name: Test
         run: >
-          cd tests
+          pwd &&
+          export PXR_PLUGINPATH_NAME=$(pwd)/build/dist/resources/plugInfo.json &&
+          export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib:$(pwd)/openassetio-usdresolver-build/dist/lib64/:$(pwd)/openassetio-usdresolver-build/dist/lib/ &&
+          export OPENASSETIO_DEFAULT_CONFIG=tests/resources/openassetio.conf &&
+          export PYTHONPATH=/usr/local/lib/python:$(pwd)/openassetio-usdresolver-build/dist/lib/python3.9/site-packages/ &&
+          cd tests &&
           python -m pytest . -v
+        #env:
+        #PXR_PLUGINPATH_NAME: openassetio-usdresolver-build/dist/resources/plugInfo.json
+        # LD_LIBRARY_PATH: /lib:/usr/lib:/usr/local/lib:$(pwd)/openassetio-usdresolver-build/dist/lib/
+        #OPENASSETIO_DEFAULT_CONFIG: tests/resources/openassetio.conf
+        #PYTHONPATH: /usr/local/python/:$(pwd)/openassetio-usdresolver-build/dist/lib/python3.9/site-packages
