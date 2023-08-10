@@ -13,8 +13,9 @@ runs:
     - name: Checkout OpenAssetIO
       uses: actions/checkout@v3
       with:
-        repository: OpenAssetIO/OpenAssetIO
+        repository: feltech/OpenAssetIO
         path: openassetio-checkout
+        ref: work/977-removeCPythonDependency
 
     - name: Build OpenAssetIO
       shell: bash
